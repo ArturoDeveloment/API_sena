@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Request
-from models.user_data import Admin
+from models.user_model import User
 from app import templates
 
 admin = APIRouter()
@@ -59,7 +59,7 @@ def get_template(request: Request):
     return templates.TemplateResponse( name="admin.html", context=context)
 
 @admin.post("/admin")
-def auth_user(data: Admin):
+def auth_user(data: User):
     @session
     def auth(data):
         pass

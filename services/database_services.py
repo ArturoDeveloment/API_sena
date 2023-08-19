@@ -12,6 +12,9 @@ from models import (formation_area_model,
                     office_model)
 from schemas import formation_area_schema
 from schemas import program_schema
+from schemas import offices_schemas
+from schemas import user_schema
+
 
 # IMPORTANT!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
