@@ -10,21 +10,21 @@ if TYPE_CHECKING:
 
 
 async def create_office(
-        office: offices_schemas.CreateOffices,
+        office: offices_schemas.CreateOffice,
         db: "Session"
-) -> offices_schemas.Offices:
+) -> offices_schemas.Office:
     office = office_model.Office(**office.dict())
     db.add(office)
     db.commit()
     db.refresh(office)
-    return offices_schemas.Offices.from_orm(office)
+    return offices_schemas.Office.from_orm(office)
 
 
 async def get_all_offices(
         db: "Session"
-) -> list[offices_schemas.Offices]:
+) -> list[offices_schemas.Office]:
     offices = db.query(office_model.Office).all()
-    return list(map(offices_schemas.Offices.from_orm, offices))
+    return list(map(offices_schemas.Office.from_orm, offices))
 
 
 async def get_office(
@@ -44,10 +44,10 @@ async def delete_office(
 
 
 async def update_office(
-        office_data: offices_schemas.CreateOffices,
+        office_data: offices_schemas.CreateOffice,
         office: office_model.Office,
         db: "Session"
-) -> offices_schemas.Offices:
+) -> offices_schemas.Office:
     office.name = office_data.name
     office.description = office_data.description
     office.status = office_data.status
@@ -55,4 +55,4 @@ async def update_office(
     db.commit()
     db.refresh(office)
 
-    return offices_schemas.Offices.from_orm(office)
+    return offices_schemas.Office.from_orm(office)

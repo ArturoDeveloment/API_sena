@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: DockerFile
+    container_name: api_sena_backend
+    command: bash -c "python . -m"
+    volumes:
+      - ./API_sena/:/API_sena
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:8.1.0
+    container_name: api_sena_database
+    environment:
+      MYSQL_DATABASE: project_sena
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_HOST: localhost
+      MYSQL_PORT: 3306
+    ports:
+      - "3307:3306"

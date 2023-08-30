@@ -5,10 +5,12 @@ import pydantic as _pydantic
 class _BaseOffices(_pydantic.BaseModel):
     name: str
     description: str
+    partners : str
     status: str
+
     
 
-class Offices(_BaseOffices):
+class Office(_BaseOffices):
     id: int
     created_at: _dt.datetime
     updated_at: _dt.datetime
@@ -18,5 +20,5 @@ class Offices(_BaseOffices):
         from_attributes = True
 
 
-class CreateOffices(_BaseOffices):
+class CreateOffice(_BaseOffices):
     pass

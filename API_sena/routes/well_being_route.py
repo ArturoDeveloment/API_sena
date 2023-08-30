@@ -35,7 +35,7 @@ async def get_well_being(
     well_being = await well_being_services.get_well_being(well_being_id=well_being_id, db=db)
     if well_being is None:
         raise _fastapi.HTTPException(status_code=404, detail="well being area does not exist")
-
+    
     return well_being
 
 

@@ -12,22 +12,22 @@ if TYPE_CHECKING:
 router = APIRouter()
 
 
-@router.post("/office", response_model=offices_schemas.Offices)
+@router.post("/office", response_model=offices_schemas.Office)
 async def create_office(
-        office: offices_schemas.CreateOffices,
+        office: offices_schemas.CreateOffice,
         db: orm.Session = _fastapi.Depends(database_services.get_db)
 ):
     return await office_services.create_office(office=office, db=db)
 
 
-@router.get("/offices", response_model=List[offices_schemas.Offices])
+@router.get("/offices", response_model=List[offices_schemas.Office])
 async def get_offices(
         db: orm.Session = _fastapi.Depends(database_services.get_db)
 ):
     return await office_services.get_all_offices(db=db)
 
 
-@router.get("/office/{office_id}", response_model=offices_schemas.Offices)
+@router.get("/office/{office_id}", response_model=offices_schemas.Office)
 async def get_office(
         office_id: int,
         db: orm.Session = _fastapi.Depends(database_services.get_db)
@@ -51,10 +51,10 @@ async def delete_office(
     return "Successfully deleted the office"
 
 
-@router.put("/office/{office_id}", response_model=offices_schemas.Offices)
+@router.put("/office/{office_id}", response_model=offices_schemas.Office)
 async def update_office(
     office_id: int,
-    office_data: offices_schemas.CreateOffices,
+    office_data: offices_schemas.CreateOffice,
     db: orm.Session = _fastapi.Depends(database_services.get_db)
 ):
     office = await office_services.get_office(office_id=office_id, db=db)
