@@ -1,5 +1,8 @@
 Dockerfile
 env
 .env
-__pycache__*
+**/__pycache__/
 .env
+.idea
+.vscode
+venv

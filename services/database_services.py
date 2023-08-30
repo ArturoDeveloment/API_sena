@@ -4,10 +4,12 @@ from db import database
 
 # DONT DELETE!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-from models import formation_area_model
-from models import program_model
-from models import office_model
-from models import user_model
+from models import (formation_area_model,
+                    well_being_model,
+                    sub_office_model,
+                    program_model,
+                    entrepreneurship_model,
+                    office_model)
 from schemas import formation_area_schema
 from schemas import program_schema
 from schemas import offices_schemas

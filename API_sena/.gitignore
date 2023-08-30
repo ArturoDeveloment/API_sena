@@ -1,8 +1,0 @@
-Dockerfile
-env
-.env
-**/__pycache__/
-.env
-.idea
-.vscode
-venv
